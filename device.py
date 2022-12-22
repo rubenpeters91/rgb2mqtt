@@ -9,6 +9,8 @@ class RGBDevice:
         self.name = name
         self.base_topic = f"homeassistant/light/{self.name}"
         self._device = device
+        # Some devices start in different modes
+        self._device.set_mode("direct")
         current_color = self._device.colors[0]
         self._state: dict = {
             "state": "ON",
