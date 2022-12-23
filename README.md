@@ -1,7 +1,7 @@
 # RGB2MQTT
 
-This is a Python script that will act as a brige between an OpenRGB server and an MQTT broker.
-Useful for if you want to control your RGB lights via Home Assistant for example.
+This is a Python script that will act as a brige between an [OpenRGB](https://openrgb.org/) server and an MQTT broker (like Mosquitto).
+Useful for if you want to control your PC RGB lights via [Home Assistant](https://www.home-assistant.io/) for example.
 
 ## Installation
 
