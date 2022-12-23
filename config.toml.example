@@ -1,0 +1,11 @@
+mqtt_user = "mqtt_user"  # Your MQTT username
+mqtt_pwd = "mqtt_password"  # Your MQTT password
+mqtt_host = ""  # The ip adress of your MQTT broker
+mqtt_port = 1883  # The port of your MQTT broker
+rgb_client_name = "mqtt"  # The name you want to give to the OpenRGB Client
+
+# All devices you want to set up, key indicates the name in OpenRGB and the value is the name you choose for MQTT
+# Note that the value must always be a list, since an OpenRGB name is not unique! (RAM can occur more than once, for example)
+[device_map]
+"Gigabyte RTX3080 Gaming OC 10G" = ["mqtt_pc_gpu"]
+"Corsair Vengeance Pro RGB" = ["mqtt_pc_ram1", "mqtt_pc_ram2"]
