@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 from paho.mqtt.client import Client, MQTTMessage
 try:
-    import tomllib
+    import tomllib  # type: ignore
 except ImportError:
     import tomli as tomllib  # type: ignore
 
