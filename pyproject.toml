@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rgb2mqtt"
+description = "Python script to make OpenRGB lights available in MQTT"
+authors = [
+    {name = "Ruben Peters", email = "rubenpeters91@protonmail.com"}
+]
+readme = "README.md"
+version = "1.0.0"
+license = {text = "MIT"}
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Home Automation",
+]
+dependencies = [
+    "paho-mqtt~=1.6",
+    "openrgb-python~=0.2",
+    "tomli-w~=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/rubenpeters91/rgb2mqtt"
+
+[project.gui-scripts]
+rgb2mqtt-run = "rgb2mqtt.run:run_rgb2mqtt"
+
+[project.scripts]
+rgb2mqtt-config = "rgb2mqtt.setup:setup_rgb2mqtt"
+rgb2mqtt-autostart = "rgb2mqtt.setup:copy_to_autostart"

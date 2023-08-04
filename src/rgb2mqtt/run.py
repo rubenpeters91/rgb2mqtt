@@ -3,13 +3,19 @@ import logging
 from typing import Any, Dict
 
 from paho.mqtt.client import Client, MQTTMessage
+
 try:
     import tomllib  # type: ignore
 except ImportError:
     import tomli as tomllib  # type: ignore
 
-from utils import connect_to_openrgb, setup_devices
-from device import RGBDevice
+from rgb2mqtt.device import RGBDevice
+from rgb2mqtt.utils import (
+    config_location,
+    connect_to_openrgb,
+    log_location,
+    setup_devices,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -78,19 +84,20 @@ def on_message_sub(
         rgb_device.set_colors()
 
 
-if __name__ == "__main__":
+def run_rgb2mqtt() -> None:
     logging.basicConfig(
         level=logging.INFO,
-        filename="rgb2mqtt.log",
+        filename=log_location(),
         filemode="w",
         format="%(asctime)s %(levelname)s: %(message)s",
     )
 
-    with open("config.toml", mode="rb") as config_path:
-        config = tomllib.load(config_path)
+    config_path = config_location()
+    with open(config_path, mode="rb") as f:
+        config = tomllib.load(f)
 
     logger.info("Connecting to MQTT client...")
-    mqtt_client = Client(client_id="test_rgb")
+    mqtt_client = Client(client_id="test_rgb", clean_session=False)
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
     mqtt_client.username_pw_set(
@@ -110,3 +117,7 @@ if __name__ == "__main__":
     )
 
     mqtt_client.loop_forever()
+
+
+if __name__ == "__main__":
+    run_rgb2mqtt()

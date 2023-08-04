@@ -12,18 +12,20 @@ This script is licensed under the MIT license, so feel free to try or change it 
 
 ## Installation
 
-Use `pip install -r requirements.txt` to install the required packages.
+Use `pip install -e .` to install the required packages.
 If you are running an older Python version (<3.11) than you also need to install tomli: `pip install tomli`
 
 ## Configuration
 
 Configuration is stored in a `config.toml` file, see the `config.toml.example` file.
+
+To generate a configuration file run the `rgb2mqtt-config` script after installing.
+
 Be aware that in the device map section, you need to list the name of the OpenRGB device exactly as key.
 To figure out which devices are supported by OpenRGB, see the `notebooks/tryout_openrgb_sdk.ipynb` file.
 
 ## Usage
 
-The run the script, use `python rgb2mqtt.py`.
+The run the script, use `python src/rgb2mqtt/rgb2mqtt.py`, or use `rgb2mqtt-run` after installing.
 
-If you want this script to autostart when your PC turns on (on Windows), then press `Windows key + r` and type in `shell:startup`.
-This will open a folder that contains startup script. You can add a shortcut to the `rgb2mqtt.py` script here.
+If you want this script to autostart when your PC turns on (on Windows), use the `rgb2mqtt-autostart` command.

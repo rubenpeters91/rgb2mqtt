@@ -1,14 +1,43 @@
 import logging
+import os
+import platform
 import time
 from functools import partial
-from typing import Callable, Dict
+from pathlib import Path
+from typing import Any, Callable, Dict
 
 import paho.mqtt.client as mqtt
+import tomli_w
 from openrgb import OpenRGBClient
 
-from device import RGBDevice
+from rgb2mqtt.device import RGBDevice
 
 logger = logging.getLogger(__name__)
+
+
+def _config_logs_location() -> Path:
+    if platform.system() == "Windows":
+        config_folder = Path(os.getenv("APPDATA", "")) / "rgb2mqtt"
+    else:
+        config_folder = Path.home() / "rgb2mqtt"
+    config_folder.mkdir(parents=True, exist_ok=True)
+    return config_folder
+
+
+def config_location() -> Path:
+    return _config_logs_location() / "rgb2mqtt.toml"
+
+
+def log_location() -> Path:
+    return _config_logs_location() / "rgb2mqtt.log"
+
+
+def write_config(config_path: Path, config_dict: Dict[Any, Any]) -> None:
+    """Write config from dictionary to toml file"""
+    with open(config_path, "wb") as f:
+        tomli_w.dump(config_dict, f)
+
+    print(f"Config written to {config_path.absolute()}")
 
 
 def connect_to_openrgb(
