@@ -1,4 +1,5 @@
 config.toml
+.pypirc
 
 # Editor
 .vscode

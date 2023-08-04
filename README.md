@@ -1,5 +1,6 @@
 # RGB2MQTT
 
+[![PyPI Latest Release](https://img.shields.io/pypi/v/rgb2mqtt.svg)](https://pypi.org/project/rgb2mqtt/)
 ![GitHub](https://img.shields.io/github/license/rubenpeters91/rgb2mqtt)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
@@ -12,8 +13,8 @@ This script is licensed under the MIT license, so feel free to try or change it 
 
 ## Installation
 
-Use `pip install -e .` to install the required packages.
-If you are running an older Python version (<3.11) than you also need to install tomli: `pip install tomli`
+Use `pip install rgb2mqtt` to install the package.
+If you are running an older Python version (<3.11) you also need to install tomli: `pip install tomli`
 
 ## Configuration
 
