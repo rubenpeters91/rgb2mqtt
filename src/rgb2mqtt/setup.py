@@ -51,6 +51,8 @@ def setup_rgb2mqtt() -> None:
         )
         if overwrite_answer in ["y", "Y", "yes"]:
             write_config(config_path, config_dict)
+    else:
+        write_config(config_path, config_dict)
 
 
 def copy_to_autostart() -> None:

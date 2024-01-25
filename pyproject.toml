@@ -9,7 +9,7 @@ authors = [
     {name = "Ruben Peters", email = "rubenpeters91@protonmail.com"}
 ]
 readme = "README.md"
-version = "1.0.0"
+version = "1.0.1"
 license = {text = "MIT"}
 requires-python = ">=3.7"
 classifiers = [
@@ -23,6 +23,10 @@ dependencies = [
     "tomli-w~=1.0",
 ]
 
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev = ["black", "ruff", "isort"]
+
 [project.urls]
 Homepage = "https://github.com/rubenpeters91/rgb2mqtt"
 
@@ -32,3 +36,17 @@ rgb2mqtt-run = "rgb2mqtt.run:run_rgb2mqtt"
 [project.scripts]
 rgb2mqtt-config = "rgb2mqtt.setup:setup_rgb2mqtt"
 rgb2mqtt-autostart = "rgb2mqtt.setup:copy_to_autostart"
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+src = ["src"]
+select = [
+    "B",
+    "E",
+    "F",
+    "W",
+    "C90",
+    "I",
+]
