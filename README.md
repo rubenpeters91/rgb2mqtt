@@ -20,13 +20,20 @@ If you are running an older Python version (<3.11) you also need to install toml
 
 Configuration is stored in a `config.toml` file, see the `config.toml.example` file.
 
-To generate a configuration file run the `rgb2mqtt-config` script after installing.
+To generate a configuration file run the `rgb2mqtt-config` script after installing. To find the location of the saved config file see [Logs and config location](#logs-and-config-location)
 
 Be aware that in the device map section, you need to list the name of the OpenRGB device exactly as key.
 To figure out which devices are supported by OpenRGB, see the `notebooks/tryout_openrgb_sdk.ipynb` file.
 
+## Logs and config location
+
+The log file and config file will be written to a folder under:
+- `Users\username\AppData\Roaming\rgb2mqtt\` when using Windows
+- `/home/username/rgb2mqtt/` when using Linux
+
 ## Usage
 
 The run the script, use `python src/rgb2mqtt/rgb2mqtt.py`, or use `rgb2mqtt-run` after installing.
+All logging will be written to the log file, unless you use the verbose option (`rgb2mqtt-run -v`) in which case the logging is written to stdout.
 
 If you want this script to autostart when your PC turns on (on Windows), use the `rgb2mqtt-autostart` command.

@@ -1,5 +1,6 @@
 import json
 import logging
+import sys
 from typing import Any, Dict
 
 from paho.mqtt.client import Client, MQTTMessage
@@ -85,9 +86,17 @@ def on_message_sub(
 
 
 def run_rgb2mqtt() -> None:
+    """Script to run rgb2mqtt"""
+
+    # Check if we're running in verbose mode
+    if len(sys.argv) > 1 and "-v" in sys.argv:
+        logging_filename = None
+    else:
+        logging_filename = log_location()
+
     logging.basicConfig(
         level=logging.INFO,
-        filename=log_location(),
+        filename=logging_filename,
         filemode="w",
         format="%(asctime)s %(levelname)s: %(message)s",
     )
