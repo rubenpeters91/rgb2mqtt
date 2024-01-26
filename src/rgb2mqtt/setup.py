@@ -65,10 +65,10 @@ def copy_to_autostart() -> None:
         raise NotImplementedError()
 
     script_path = (
-        Path(sysconfig.get_path("scripts", f"{os.name}_user")) / "rgb2mqtt-run.exe"
+        Path(sysconfig.get_path("scripts", f"{os.name}_user")) / "rgb2mqtt-gui-run.exe"
     )
     if not script_path.exists():
-        script_path = Path(sysconfig.get_path("scripts")) / "rgb2mqtt-run.exe"
+        script_path = Path(sysconfig.get_path("scripts")) / "rgb2mqtt-gui-run.exe"
         if not script_path.exists():
             raise Exception(
                 "Can't find installed run script, did you run 'pip install'?"
@@ -81,7 +81,7 @@ def copy_to_autostart() -> None:
         / "Start Menu"
         / "Programs"
         / "Startup"
-        / "rgb2mqtt-run.exe"
+        / "rgb2mqtt-gui-run.exe"
     )
     if target_file.exists():
         logger.error("Script already in autostart!")

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-01-26
+
+### Fixed
+- Added a separate `rgb2mqtt-gui-run` gui-script, so using the normal `rgb2mqtt-run` script now functions as a console script. This makes it easier to debug the run script, since stdout in a gui-script is lost.
+The gui-script is only used for auto-start, which prevents a terminal popup on Windows.
+
 ## [1.0.1] - 2024-01-25
 
 ### Fixed
