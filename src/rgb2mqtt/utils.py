@@ -116,13 +116,19 @@ def setup_devices(
     """
     for orgb_name, mqtt_names in device_map.items():
         devices = rgb_client.get_devices_by_name(orgb_name)
+        if devices == []:
+            # When openRGB is setting up, sometimes devices are not loaded yet
+            logger.warning(f"device {orgb_name} not found, will retry in 30 seconds")
+            time.sleep(30)
+            devices = rgb_client.get_devices_by_name(orgb_name)
         if len(devices) != len(mqtt_names):
             error_message = (
                 f"The amount of OpenRGB devices with this name is {len(devices)} "
                 f"while there are only {len(mqtt_names)} values in config!"
+                f"Skipping {orgb_name}..."
             )
             logger.error(error_message)
-            raise Exception(error_message)
+            continue
 
         for device, mqtt_name in zip(devices, mqtt_names):
             rgb_device = RGBDevice(mqtt_name, device)
